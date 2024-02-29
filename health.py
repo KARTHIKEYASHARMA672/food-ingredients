@@ -8,7 +8,7 @@ import os
 import google.generativeai as genai
 from PIL import Image
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=os.getenv("AIzaSyDt9PK2goi-jk9hZW9SOF6JoNnAMg_SmeY"))
 
 ## Function to load Google Gemini Pro Vision API And get response
 
@@ -35,9 +35,9 @@ def input_image_setup(uploaded_file):
     
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Gemini Health App")
+st.set_page_config(page_title="Mobile Details Generator")
 
-st.header("Gemini Health App")
+st.header("moblie details generator")
 input=st.text_input("Input Prompt: ",key="input")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 image=""   
@@ -46,17 +46,12 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
 
-submit=st.button("Tell me the total calories")
+submit=st.button("Tell me the details")
 
 input_prompt="""
-You are an expert in nutritionist where you need to see the food items from the image
-               and calculate the total calories, also provide the details of every food items with calories intake
-               is below format
-
-               1. Item 1 - no of calories
-               2. Item 2 - no of calories
-               ----
-               ----
+   Retrieve comprehensive details about the specifications, features, and reviews of the [Mobile Phone Model]. Include information on the processor,
+   RAM, storage capacity, display type and size, camera specifications, battery capacity, operating system, connectivity options, and any unique features. 
+   Additionally, provide an overview of user reviews and ratings to gauge the overall user satisfaction. Ensure the information is up-to-date and accurate
 
 
 """
