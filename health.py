@@ -35,10 +35,11 @@ def input_image_setup(uploaded_file):
     
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Mobile Details Generator")
+st.set_page_config(page_title="Food Recipe App")
 
-st.header("moblie details generator")
-input=st.text_input("Input Prompt: ",key="input")
+st.header("Food Recipe App")
+st.write("upload the food image and you'll get the recipe :)")
+input=''
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 image=""   
 if uploaded_file is not None:
@@ -46,13 +47,21 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
 
-submit=st.button("Tell me the details")
+submit=st.button("Teach me the recipe")
 
 input_prompt="""
-   Retrieve comprehensive details about the specifications, features, and reviews of the [Mobile Phone Model]. Include information on the processor,
-   RAM, storage capacity, display type and size, camera specifications, battery capacity, operating system, connectivity options, and any unique features. 
-   Additionally, provide an overview of user reviews and ratings to gauge the overall user satisfaction. Ensure the information is up-to-date and accurate
+   You are an expert cook and you know to make every dish in the world. detect the food item from the image. then give a detailed recipie in the given format(give ingredieants and steps in bullet style:
+Food recognized : <name of food> 
+Origin : <nationality/region>
 
+Ingredients needed  : 1. <ingredient one> 
+                      2. <ingredient two> 
+                      ....
+Steps to prepare   step 1 : <step 1> 
+                   step 2 : <step 2> 
+                      ...
+
+Your <food name> is ready
 
 """
 
